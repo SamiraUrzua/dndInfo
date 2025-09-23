@@ -3,87 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Classes Gallery</title>
+<title>Classes</title>
+<link rel="stylesheet" href="styles.css">
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #111;
-    font-family: sans-serif;
-  }
-
-  .scroll-container {
-    width: 100%;
-    height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
   .grid {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
-    grid-template-rows: repeat(2, auto); /* two rows of auto height */
-    gap: 2vh 0.5vw; /* small spacing between rows/columns */
-    padding: 2vh 1vw;
+    grid-template-rows: repeat(2, auto);
     box-sizing: border-box;
+	row-gap: 5vh;  /* distance between first and second row */
   }
 
-  .grid a {
+.grid a {
     display: flex;
-    justify-content: center; /* horizontal center */
-    align-items: flex-end;   /* vertical bottom */
+    justify-content: center;
+    align-items: flex-end;
     position: relative;
     text-decoration: none;
-    color: white;
-    height: 100%;
-  }
+}
 
   .grid img {
-    max-height: 42vh; /* limit size so it fits two rows */
+    max-height: 40vh;
     width: auto;
     display: block;
     transition: transform 0.3s, filter 0.3s;
   }
 
-  .grid a span {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.6em;
-    z-index: 20;      /* ensure it's above the image */
-    white-space: nowrap;
-  }
-
-
-  .grid img:hover {
+  .grid a:hover img {
     transform: scale(1.1);
     filter: brightness(1.5);
+  }
+
+.grid a span {
+    position: absolute;
+    bottom: 5%; /* distance from bottom of image */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    font-size: calc(0.1 * 40vh); /* 10% of image max height */
     z-index: 10;
+    white-space: nowrap;
+    color: var(--text-primary);
+}
+  body {
+    margin: 0;           /* remove default + imported spacing */
+    padding: 0;          /* remove padding causing vertical overflow */
+    min-height: 100vh;   /* keep full viewport height */
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;    /* horizontal scroll */
+    overflow-y: hidden;  /* hide vertical scroll */
   }
 </style>
 </head>
 <body>
+
 <div class="scroll-container">
   <div class="grid">
-    <a href="classes/Barbarian.html"><img src="classes/images/Barbarian.png" alt="Barbarian"><span>Barbarian</span></a>
-    <a href="classes/Bard.html"><img src="classes/images/Bard.png" alt="Bard"><span>Bard</span></a>
-    <a href="classes/Cleric.html"><img src="classes/images/Cleric.png" alt="Cleric"><span>Cleric</span></a>
-    <a href="classes/Druid.html"><img src="classes/images/Druid.png" alt="Druid"><span>Druid</span></a>
-    <a href="classes/Fighter.html"><img src="classes/images/Fighter.png" alt="Fighter"><span>Fighter</span></a>
-    <a href="classes/Monk.html"><img src="classes/images/Monk.png" alt="Monk"><span>Monk</span></a>
-    <a href="classes/Paladin.html"><img src="classes/images/Paladin.png" alt="Paladin"><span>Paladin</span></a>
-    <a href="classes/Ranger.html"><img src="classes/images/Ranger.png" alt="Ranger"><span>Ranger</span></a>
-    <a href="classes/Rogue.html"><img src="classes/images/Rogue.png" alt="Rogue"><span>Rogue</span></a>
-    <a href="classes/Sorcerer.html"><img src="classes/images/Sorcerer.png" alt="Sorcerer"><span>Sorcerer</span></a>
-    <a href="classes/Warlock.html"><img src="classes/images/Warlock.png" alt="Warlock"><span>Warlock</span></a>
-    <a href="classes/Wizard.html"><img src="classes/images/Wizard.png" alt="Wizard"><span>Wizard</span></a>
+    <a href="content.html#classes/Barbarian">
+      <img src="classes/images/Barbarian.png" alt="Barbarian">
+      <span data-en="Barbarian" data-es="Bárbaro">Barbarian</span>
+    </a>
+    <a href="content.html#classes/Bard">
+      <img src="classes/images/Bard.png" alt="Bard">
+      <span data-en="Bard" data-es="Bardo">Bard</span>
+    </a>
+    <a href="content.html#classes/Cleric">
+      <img src="classes/images/Cleric.png" alt="Cleric">
+      <span data-en="Cleric" data-es="Clérigo">Cleric</span>
+    </a>
+    <a href="content.html#classes/Druid">
+      <img src="classes/images/Druid.png" alt="Druid">
+      <span data-en="Druid" data-es="Druida">Druid</span>
+    </a>
+    <a href="content.html#classes/Fighter">
+      <img src="classes/images/Fighter.png" alt="Fighter">
+      <span data-en="Fighter" data-es="Guerrero">Fighter</span>
+    </a>
+    <a href="content.html#classes/Monk">
+      <img src="classes/images/Monk.png" alt="Monk">
+      <span data-en="Monk" data-es="Monje">Monk</span>
+    </a>
+    <a href="content.html#classes/Paladin">
+      <img src="classes/images/Paladin.png" alt="Paladin">
+      <span data-en="Paladin" data-es="Paladín">Paladin</span>
+    </a>
+    <a href="content.html#classes/Ranger">
+      <img src="classes/images/Ranger.png" alt="Ranger">
+      <span data-en="Ranger" data-es="Explorador">Ranger</span>
+    </a>
+    <a href="content.html#classes/Rogue">
+      <img src="classes/images/Rogue.png" alt="Rogue">
+      <span data-en="Rogue" data-es="Pícaro">Rogue</span>
+    </a>
+    <a href="content.html#classes/Sorcerer">
+      <img src="classes/images/Sorcerer.png" alt="Sorcerer">
+      <span data-en="Sorcerer" data-es="Hechicero">Sorcerer</span>
+    </a>
+    <a href="content.html#classes/Warlock">
+      <img src="classes/images/Warlock.png" alt="Warlock">
+      <span data-en="Warlock" data-es="Brujo">Warlock</span>
+    </a>
+    <a href="content.html#classes/Wizard">
+      <img src="classes/images/Wizard.png" alt="Wizard">
+      <span data-en="Wizard" data-es="Mago">Wizard</span>
+    </a>
   </div>
 </div>
+
+
+<!-- Include gear menu JS - assuming this is a local file -->
+<script src="language.js"></script>
+
 </body>
 </html>

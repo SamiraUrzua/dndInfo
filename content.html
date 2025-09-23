@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Informative Site</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English+SC&family=Fondamento:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container" id="content">
+        <!-- Content will be loaded here by your script -->
+    </main>
+
+    <script src="language.js"></script>
+    <script>
+        function loadContent() {
+            const filePath = location.hash.substring(1) || 'page1';
+            fetch(filePath + '.html')
+                .then(resp => {
+                    if (!resp.ok) throw new Error('Content not found');
+                    return resp.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    document.getElementById('content').innerHTML = doc.body.innerHTML;
+
+                    // update page title without needing a header
+                    const newTitle = doc.querySelector('title');
+                    if (newTitle) document.title = newTitle.textContent;
+
+                    const savedLang = localStorage.getItem('lang') || 'en';
+                    setLanguage(savedLang);
+                })
+                .catch(err => {
+                    document.getElementById('content').innerHTML = '<p>Content not found.</p>';
+                });
+        }
+
+        window.addEventListener('load', loadContent);
+        window.addEventListener('hashchange', loadContent);
+    </script>
+</body>
+</html>
