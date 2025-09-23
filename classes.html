@@ -6,14 +6,15 @@
 <title>Classes</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .grid {
+	.grid {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
     grid-template-rows: repeat(2, auto);
     box-sizing: border-box;
-	row-gap: 5vh;  /* distance between first and second row */
-  }
+    row-gap: 5vh;
+    min-width: max-content; /* ensures the grid is wide enough for horizontal scroll */
+}
 
 .grid a {
     display: flex;
@@ -24,7 +25,7 @@
 }
 
   .grid img {
-    max-height: 40vh;
+    max-height: 43vh;
     width: auto;
     display: block;
     transition: transform 0.3s, filter 0.3s;
@@ -47,15 +48,16 @@
     white-space: nowrap;
     color: var(--text-primary);
 }
-  body {
-    margin: 0;           /* remove default + imported spacing */
-    padding: 0;          /* remove padding causing vertical overflow */
-    min-height: 100vh;   /* keep full viewport height */
-    justify-content: center;
-    align-items: center;
-    overflow-x: auto;    /* horizontal scroll */
-    overflow-y: hidden;  /* hide vertical scroll */
-  }
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;           /* optional: center content horizontally */
+    justify-content: flex-start; 
+	scroll-behavior: smooth;
+}
 </style>
 </head>
 <body>
