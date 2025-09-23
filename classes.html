@@ -22,24 +22,25 @@
   .grid {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(auto, 100%);
-    grid-template-rows: 1fr 1fr;
-    gap: 0px;
-    padding: 3vh 1vw 1vw 0;
-    height: 100%;
+    grid-auto-columns: auto;
+    grid-template-rows: repeat(2, auto); /* two rows of auto height */
+    gap: 2vh 0.5vw; /* small spacing between rows/columns */
+    padding: 2vh 1vw;
     box-sizing: border-box;
   }
 
-  .grid a {
-    position: relative;
-    display: block;
-    height: 100%;
-    text-decoration: none;
-    color: white;
-  }
+.grid a {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: flex-end;   /* vertical bottom */
+  position: relative;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+}
 
   .grid img {
-    height: 42vh;
+    max-height: 40vh; /* limit size so it fits two rows */
     width: auto;
     display: block;
     transition: transform 0.3s, filter 0.3s;
@@ -47,7 +48,7 @@
 
   .grid a span {
     position: absolute;
-    bottom: 15%;   /* instead of bottom: 0 → raises text above bottom */
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px;
@@ -55,9 +56,10 @@
     border-radius: 6px;
     font-weight: bold;
     font-size: 1.6em;
-    pointer-events: none; /* makes hover still work when cursor is on text */
+    z-index: 20;      /* ensure it's above the image */
     white-space: nowrap;
   }
+
 
   .grid img:hover {
     transform: scale(1.1);
