@@ -6,118 +6,148 @@
 <title>Classes</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-	.grid {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: auto;
-    grid-template-rows: repeat(2, auto);
-    box-sizing: border-box;
-    row-gap: 5vh;
-    min-width: max-content; /* ensures the grid is wide enough for horizontal scroll */
-}
-
-.grid a {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    text-decoration: none;
-}
-
-  .grid img {
-    max-height: 43vh;
-    width: auto;
-    display: block;
-    transition: transform 0.3s, filter 0.3s;
-  }
-
-  .grid a:hover img {
-    transform: scale(1.1);
-    filter: brightness(1.5);
-  }
-
-.grid a span {
-    position: absolute;
-    bottom: 5%; /* distance from bottom of image */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-    font-size: calc(0.1 * 40vh); /* 10% of image max height */
-    z-index: 10;
-    white-space: nowrap;
-    color: var(--text-primary);
-}
 body {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     min-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;           /* optional: center content horizontally */
-    justify-content: flex-start; 
-	scroll-behavior: smooth;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 0;
+    max-width: 95vw;
+    margin: 0 auto;
+}
+.grid a {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+}
+.grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s, filter 0.3s;
+}
+.grid a:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+.grid a {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+}
+.grid span {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5em 0.8em;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: clamp(18px, calc(100% / 8), 36px); /* Increased from 12px-28px to 18px-36px */
+    white-space: nowrap;
+}
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0;
+    }
+    
+    body {
+        padding: 5px;
+    }
+    
+    .grid span {
+        font-size: clamp(16px, calc(100% / 7), 32px); /* Slightly smaller but still bigger than original for mobile */
+    }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0;
+    }
+    
+    body {
+        padding: 5px;
+    }
+    
+    .grid span {
+        font-size: clamp(14px, calc(100% / 8), 30px); /* Adjusted for landscape orientation */
+    }
 }
 </style>
 </head>
 <body>
-
-<div class="scroll-container">
-  <div class="grid">
-    <a href="content.html#classes/barbarian">
-      <img src="classes/images/Barbarian.png" alt="Barbarian">
-      <span data-en="Barbarian" data-es="Bárbaro">Barbarian</span>
-    </a>
-    <a href="content.html#classes/bard">
-      <img src="classes/images/Bard.png" alt="Bard">
-      <span data-en="Bard" data-es="Bardo">Bard</span>
-    </a>
-    <a href="content.html#classes/cleric">
-      <img src="classes/images/Cleric.png" alt="Cleric">
-      <span data-en="Cleric" data-es="Clérigo">Cleric</span>
-    </a>
-    <a href="content.html#classes/druid">
-      <img src="classes/images/Druid.png" alt="Druid">
-      <span data-en="Druid" data-es="Druida">Druid</span>
-    </a>
-    <a href="content.html#classes/fighter">
-      <img src="classes/images/Fighter.png" alt="Fighter">
-      <span data-en="Fighter" data-es="Guerrero">Fighter</span>
-    </a>
-    <a href="content.html#classes/monk">
-      <img src="classes/images/Monk.png" alt="Monk">
-      <span data-en="Monk" data-es="Monje">Monk</span>
-    </a>
-    <a href="content.html#classes/paladin">
-      <img src="classes/images/Paladin.png" alt="Paladin">
-      <span data-en="Paladin" data-es="Paladín">Paladin</span>
-    </a>
-    <a href="content.html#classes/ranger">
-      <img src="classes/images/Ranger.png" alt="Ranger">
-      <span data-en="Ranger" data-es="Explorador">Ranger</span>
-    </a>
-    <a href="content.html#classes/rogue">
-      <img src="classes/images/Rogue.png" alt="Rogue">
-      <span data-en="Rogue" data-es="Pícaro">Rogue</span>
-    </a>
-    <a href="content.html#classes/sorcerer">
-      <img src="classes/images/Sorcerer.png" alt="Sorcerer">
-      <span data-en="Sorcerer" data-es="Hechicero">Sorcerer</span>
-    </a>
-    <a href="content.html#classes/warlock">
-      <img src="classes/images/Warlock.png" alt="Warlock">
-      <span data-en="Warlock" data-es="Brujo">Warlock</span>
-    </a>
-    <a href="content.html#classes/wizard">
-      <img src="classes/images/Wizard.png" alt="Wizard">
-      <span data-en="Wizard" data-es="Mago">Wizard</span>
-    </a>
-  </div>
+<div class="grid">
+  <a href="content.html#classes/barbarian">
+    <img src="classes/images/Barbarian.png" alt="Barbarian">
+    <span data-en="Barbarian" data-es="Bárbaro">Barbarian</span>
+  </a>
+  
+  <a href="content.html#classes/bard">
+    <img src="classes/images/Bard.png" alt="Bard">
+    <span data-en="Bard" data-es="Bardo">Bard</span>
+  </a>
+  
+  <a href="content.html#classes/cleric">
+    <img src="classes/images/Cleric.png" alt="Cleric">
+    <span data-en="Cleric" data-es="Clérigo">Cleric</span>
+  </a>
+  
+  <a href="content.html#classes/druid">
+    <img src="classes/images/Druid.png" alt="Druid">
+    <span data-en="Druid" data-es="Druida">Druid</span>
+  </a>
+  
+  <a href="content.html#classes/fighter">
+    <img src="classes/images/Fighter.png" alt="Fighter">
+    <span data-en="Fighter" data-es="Guerrero">Fighter</span>
+  </a>
+  
+  <a href="content.html#classes/monk">
+    <img src="classes/images/Monk.png" alt="Monk">
+    <span data-en="Monk" data-es="Monje">Monk</span>
+  </a>
+  
+  <a href="content.html#classes/paladin">
+    <img src="classes/images/Paladin.png" alt="Paladin">
+    <span data-en="Paladin" data-es="Paladín">Paladin</span>
+  </a>
+  
+  <a href="content.html#classes/ranger">
+    <img src="classes/images/Ranger.png" alt="Ranger">
+    <span data-en="Ranger" data-es="Explorador">Ranger</span>
+  </a>
+  
+  <a href="content.html#classes/rogue">
+    <img src="classes/images/Rogue.png" alt="Rogue">
+    <span data-en="Rogue" data-es="Pícaro">Rogue</span>
+  </a>
+  
+  <a href="content.html#classes/sorcerer">
+    <img src="classes/images/Sorcerer.png" alt="Sorcerer">
+    <span data-en="Sorcerer" data-es="Hechicero">Sorcerer</span>
+  </a>
+  
+  <a href="content.html#classes/warlock">
+    <img src="classes/images/Warlock.png" alt="Warlock">
+    <span data-en="Warlock" data-es="Brujo">Warlock</span>
+  </a>
+  
+  <a href="content.html#classes/wizard">
+    <img src="classes/images/Wizard.png" alt="Wizard">
+    <span data-en="Wizard" data-es="Mago">Wizard</span>
+  </a>
 </div>
-
-
-<!-- Include gear menu JS - assuming this is a local file -->
 <script src="language.js"></script>
-
 </body>
 </html>
